@@ -1,11 +1,122 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Terra do Café</title>
-  </head>
-  <body>
-    <h1>Welcome to Terra do Café</h1>
-    <p>Website coming soon!</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoffeeCo</title>
+  <style>
+    /* Reset & base styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f4f4f4; color: #333; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* Header */
+    header { background: #6b4f4f; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    nav ul { list-style: none; display: flex; }
+    nav li { margin-left: 1.5rem; }
+    nav a:hover { color: #f4f4f4; }
+
+    /* Hero */
+    .hero { background: url('https://source.unsplash.com/featured/?coffee') center/cover no-repeat; height: 60vh; display: flex; align-items: center; justify-content: center; color: #fff; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+    .hero h1 { font-size: 3rem; }
+
+    /* Menu section */
+    #menu { padding: 2rem; }
+    #menu h2 { text-align: center; margin-bottom: 1.5rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .card img { height: 160px; object-fit: cover; }
+    .card-content { padding: 1rem; }
+    .card-content h3 { margin-bottom: 0.5rem; }
+    .card-content p { margin-bottom: 1rem; }
+    .card-content button { background: #6b4f4f; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+    .card-content button:hover { background: #5a3f3f; }
+
+    /* About & Contact */
+    section { padding: 2rem; background: #fff; margin: 1rem 2rem; border-radius: 8px; }
+    #about h2, #contact h2 { text-align: center; margin-bottom: 1rem; }
+    #contact form { display: flex; flex-direction: column; max-width: 400px; margin: 0 auto; }
+    #contact label { margin-top: 0.5rem; }
+    #contact input, #contact textarea { padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
+    #contact button { margin-top: 1rem; background: #6b4f4f; color: #fff; border: none; padding: 0.75rem; border-radius: 4px; cursor: pointer; }
+    #contact button:hover { background: #5a3f3f; }
+
+    /* Footer */
+    footer { text-align: center; padding: 1rem; background: #333; color: #fff; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">CoffeeCo</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to CoffeeCo</h1>
+  </section>
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://source.unsplash.com/featured/?espresso" alt="Espresso">
+        <div class="card-content">
+          <h3>Espresso</h3>
+          <p>Rich and bold espresso shot.</p>
+          <button>Order Now</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/featured/?latte" alt="Latte">
+        <div class="card-content">
+          <h3>Caffe Latte</h3>
+          <p>Smooth blend of espresso and steamed milk.</p>
+          <button>Order Now</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/featured/?cappuccino" alt="Cappuccino">
+        <div class="card-content">
+          <h3>Cappuccino</h3>
+          <p>Espresso with steamed milk foam.</p>
+          <button>Order Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At CoffeeCo, we're passionate about delivering the finest coffee experience. From bean selection to brewing, every step is crafted with care.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 CoffeeCo. All rights reserved.</p>
+  </footer>
+</body>
 </html>
