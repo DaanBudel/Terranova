@@ -1,226 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terra Cafe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terruño Brasil — Rare Micro-Lot Coffee</title>
+  <meta name="description" content="Luxury single-origin coffee hand-harvested in Minas Gerais, Brazil." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
-    :root {
-      --primary: #2B2A28;
-      --accent: #E8B447;
-      --background: #FAF8F5;
-      --text: #3A3A3A;
-      --light-text: #6F6F6F;
-      --transition: 0.3s ease;
+    /* -------- Palette -------- */
+    :root{
+      --forest:#1e4131;
+      --espresso:#3a2012;
+      --gold:#d3a550;
+      --cream:#faf8f4;
+      --white:#ffffff;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
+
+    /* --- Base Reset --- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;background:var(--cream);color:var(--espresso);line-height:1.75;
+      -webkit-font-smoothing:antialiased;scroll-behavior:smooth;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    /* Navbar */
-    header {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      background: rgba(250,248,245,0.9);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    img{display:block;width:100%;height:auto}
+    a{color:var(--gold);text-decoration:none;transition:color .3s}
+    a:hover{color:var(--forest)}
+
+    /* --- Utilities --- */
+    .section-bg::before{
+      content:"";position:absolute;inset:0;z-index:-1;
+      background-size:cover;background-position:center;background-repeat:no-repeat;
+      filter:brightness(.35);
     }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
+    /* Light, parchment-like grain over photos so text stays readable */
+    .grain{position:absolute;inset:0;pointer-events:none;mixin-blend-mode:overlay;
+      background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABZklEQVQ4T6WTL0hDQRiGn1xKZkUqaRJaGZX4DVraMWOXWljadEKpV2VkGk2dTvYkVGTpBLaBaI0iaT4B4eF9wzHfsmPn35zzn3n+79znqJ7BZUMNVWcBGaS6DY8A30x9hscQxqvmV9i38wZ5jGKkiBcxh6rIc2iiF3rnPCtwvYBYurheKbKMnS4FlVF6v4pCT2N9QEfIQuKQS+KJ11dQF8QS1McJoYn9wyKZWAiUmN3FjHEAKly+8IvMoEOcC1CvILuEAf8EThPHlM1N8bdO7+DeQhANTQBDp0EqYh6yjV8hBbAvsQu63yFO2hfQTpgHvNb3KmM5kG+0UMkhG0uwuyrpD+eCoZiPU3nZkeGA7nzuTxl0c4DljMiDka3KGn9gwI0lAeW1lHBEa4JJp4SThQh1JrKkKNsHaTA6JuN+o8EMj0B6d5wwqoPQFcFgYJc55KOK1BgCozCU0Hk9Gt6WQY8Ha4vrfIJBZkSx54trxr12qXmSK8hb585cSaY6Fpz2CAAAAAElFTkSuQmCC") repeat;
+      opacity:.33;
     }
-    .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 600; color: var(--primary); }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul li a { font-weight: 500; transition: color var(--transition); }
-    nav ul li a:hover { color: var(--accent); }
-    /* Hero */
-    .hero {
-      height: 100vh;
-      background: url('https://source.unsplash.com/1600x900/?brazil-coffee') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-top: 72px;
+
+    /* --- Sticky Nav --- */
+    .top-nav{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:center;
+      background:rgba(30,65,49,.85);backdrop-filter:blur(6px);padding:.6rem 1rem;z-index:50}
+    .top-nav ul{display:flex;gap:2rem;list-style:none}
+    .top-nav a{color:var(--white);text-transform:uppercase;font-size:.78rem;font-weight:500;position:relative}
+    .top-nav a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s}
+    .top-nav a:hover::after{width:100%}
+
+    /* --- Hero --- */
+    header{
+      position:relative;height:92vh;display:flex;justify-content:center;align-items:center;text-align:center;
+      color:var(--white);overflow:hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(43,42,40,0.5);
+    header::before{
+      content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=1920&q=80")
+      center/cover no-repeat;filter:brightness(.45);
     }
-    .hero-content {
-      position: relative;
-      text-align: center;
-      color: #fff;
-      animation: fadeIn 1.2s ease-out;
-    }
-    .hero-content h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #f0f0f0;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: var(--accent);
-      color: var(--background);
-      border-radius: 2rem;
-      font-weight: 600;
-      transition: transform var(--transition), background var(--transition);
-    }
-    .btn:hover { transform: scale(1.05); background: #d09a30; }
-    /* Sections */
-    section { padding: 6rem 1rem; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center; }
-    .about-text h2,
-    .product-text h2,
-    .contact-text h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
-    .about-text p,
-    .product-text p,
-    .contact-text p { color: var(--light-text); margin-bottom: 1rem; }
-    /* Product Card */
-    .product-card {
-      background: #fff;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
-    .product-card img { height: 300px; object-fit: cover; }
-    .product-content { padding: 2rem; }
-    .product-content h3 { margin-bottom: 1rem; font-size: 2rem; }
-    .product-content ul { list-style: none; margin-bottom: 1.5rem; }
-    .product-content ul li { margin-bottom: 0.5rem; }
-    /* Contact Form */
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-form input,
-    .contact-form textarea {
-      padding: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      resize: vertical;
-    }
-    /* Footer */
-    footer { background: var(--primary); color: #fff; text-align: center; padding: 2rem 1rem; }
-    .socials { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; }
-    .socials a { font-size: 1.5rem; transition: color var(--transition); }
-    .socials a:hover { color: var(--accent); }
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2.8rem; }
-    }
+    .hero-copy{position:relative;z-index:1;padding:0 1rem}
+    .hero-copy h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5rem);font-weight:700;letter-spacing:2px;text-shadow:0 2px 4px rgba(0,0,0,.35)}
+    .hero-copy p{font-size:1.25rem;font-weight:300;margin-top:.9rem;letter-spacing:1px}
+
+    /* --- Layout --- */
+    main{max-width:1150px;margin:0 auto;padding:5.5rem 1.4rem 4rem}
+    section{margin-bottom:7rem;position:relative}
+    h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--white);margin-bottom:2rem;text-shadow:0 2px 5px rgba(0,0,0,.45)}
+    h2::after{content:"";display:block;width:70px;height:3px;background:var(--gold);margin-top:.6rem}
+
+    /* Story Grid */
+    .story{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:3.2rem;align-items:center;color:var(--white)}
+    .story p{margin-bottom:1.1rem}
+
+    /* Products Section */
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2.5rem}
+    .card{border-radius:12px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.12);transition:transform .35s;background:var(--white);color:var(--espresso)}
+    .card:hover{transform:translateY(-8px)}
+    .card img{height:230px;object-fit:cover}
+    .card-content{padding:1.4rem 1.2rem}
+    .card-content h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem}
+    .card-content p{font-size:.92rem;color:#5f554d;margin-top:.62rem}
+    .price{font-weight:600;color:var(--gold);margin-top:1rem;font-size:1.04rem}
+
+    /* CTA */
+    .cta{background:rgba(30,65,49,.86);color:var(--white);text-align:center;padding:3.5rem 1.2rem;border-radius:10px;overflow:hidden}
+    .cta h3{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:.7rem}
+    .cta a{display:inline-block;margin-top:1.4rem;background:var(--gold);color:var(--espresso);padding:.95rem 2.3rem;border-radius:7px;font-weight:500;
+      text-transform:uppercase;letter-spacing:1px;transition:background .3s}
+    .cta a:hover{background:var(--white)}
+
+    /* Contact */
+    #contact p{margin-top:.65rem;color:var(--white)}
+    footer{text-align:center;padding:2.5rem 0;font-size:.9rem;color:#7b7168}
+
+    /* --- Responsive Tweaks --- */
+    @media(max-width:720px){.top-nav ul{gap:1.2rem}}
   </style>
 </head>
 <body>
+  <!-- Sticky Navigation -->
+  <nav class="top-nav" aria-label="Primary">
+    <ul>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#products">Collection</a></li>
+      <li><a href="#club">Club</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+  </nav>
 
-  <!-- Navbar -->
+  <!-- Hero -->
   <header>
-    <div class="nav-container container">
-      <div class="logo">Terra Cafe</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#product">Product</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="hero-copy">
+      <h1>Terruño Brasil</h1>
+      <p>Rare Micro-Lot Coffee from Minas Gerais</p>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-content container">
-      <h1>Authentic Brazilian Coffee</h1>
-      <p>Single-origin Arabica beans, direct from Brazil to your cup.</p>
-      <a href="#product" class="btn">Shop Now</a>
+  <!-- STORY (roots in rainforest-green beans background) -->
+  <section id="story" class="section-bg story"
+           style="--bg:url('https://images.unsplash.com/photo-1447256656956-f9e79f05ba98?auto=format&fit=crop&w=1950&q=80')">
+    <h2>Crafted in the Highlands</h2>
+    <div>
+      <p>At 1,350 m in the Serra da Mantiqueira, nutrient-rich volcanic soil and cool nights yield beans bursting with florals and dark-fruit complexity.</p>
+      <p>We partner directly with multigenerational farmers, pay beyond-fair premiums, and roast in-house on a zero-emission Loring for unmatched clarity.</p>
     </div>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1573497019253-cbc7e2b59829?auto=format&fit=crop&w=960&q=80"
+           alt="Brazilian farmer hand-sorting coffee beans">
+    </figure>
+    <span class="grain"></span>
   </section>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container two-col">
-      <div class="about-text">
-        <h2>Our Story</h2>
-        <p>For over two decades, we've partnered with small Brazilian farms, ensuring fair trade and sustainable practices. Each bean is handpicked at peak ripeness, preserving the unique terroir of Minas Gerais.</p>
-        <p>At Terra Cafe, transparency and quality are our core values. Experience a journey from farm to cup with every brew.</p>
-      </div>
-      <div><img src="https://source.unsplash.com/800x600/?coffee-farm" alt="Coffee Farm"></div>
-    </div>
-  </section>
-
-  <!-- Product -->
-  <section id="product">
-    <div class="container">
-      <div class="product-text" style="text-align:center; margin-bottom:3rem;">
-        <h2>Our Signature Blend</h2>
-        <p>Medium roast with notes of dark chocolate, almond, and tropical fruit. Perfect for espresso, pour-over, and French press.</p>
-      </div>
-      <div class="product-card">
-        <img src="https://source.unsplash.com/800x600/?coffee-beans" alt="Terra Cafe Beans">
-        <div class="product-content">
-          <h3>Terra Cafe Brazilian Roast</h3>
-          <ul>
-            <li>Origin: Minas Gerais, Brazil</li>
-            <li>Roast: Medium</li>
-            <li>Size: 250g whole bean</li>
-          </ul>
-          <a href="mailto:order@terracafe.com?subject=Order Terra Cafe" class="btn">Buy Now</a>
+  <!-- PRODUCTS (low-opacity roasted-bean background) -->
+  <section id="products" class="section-bg"
+           style="--bg:url('https://images.unsplash.com/photo-1475856141065-c2d4b5815f6f?auto=format&fit=crop&w=1920&q=80')">
+    <h2>Signature Releases</h2>
+    <div class="products-grid">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1528715471579-d1a8c9139ab9?auto=format&fit=crop&w=960&q=80" alt="Fazenda São Roque">
+        <div class="card-content">
+          <h3>Fazenda São Roque <small>(Single Estate)</small></h3>
+          <p>Bright cherry, panela sugar, silky mouthfeel. Limited to 150 kg per harvest.</p>
+          <div class="price">€34 / 250 g</div>
         </div>
-      </div>
-    </div>
-  </section>
+      </article>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container two-col">
-      <div class="contact-text">
-        <h2>Get in Touch</h2>
-        <p>Questions about our coffee? We’re here to help.</p>
-        <p>Email: <a href="mailto:contact@terracafe.com">contact@terracafe.com</a></p>
-        <p>Phone: +55 11 2345 6789</p>
-      </div>
-      <form class="contact-form" action="#">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1517686469429-8bdb7a57e422?auto=format&fit=crop&w=960&q=80" alt="Ouro Blend">
+        <div class="card-content">
+          <h3>Ouro Blend</h3>
+          <p>Rich cacao, toasted almond, subtle spice—crafted for espresso and filter alike.</p>
+          <div class="price">€28 / 250 g</div>
+        </div>
+      </article>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Terra Cafe. All Rights Reserved.</p>
-    <div class="socials">
-      <a href="#" aria-label="Instagram">📸</a>
-      <a href="#" aria-label="Facebook">👍</a>
-      <a href="#" aria-label="Twitter">🐦</a>
-    </div>
-  </footer>
-
-</body>
-</html>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1523942839745-7848d6da7a70?auto=format&fit=crop&w=960&q=80" alt="Reserva Dark Roast">
+        <div class="card-conten
