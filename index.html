@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grand Cru Beans — Terra do Café</title>
+  <title>Terra do Café — Exquisite Single-Origin Coffee</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -37,14 +37,17 @@
       background: rgba(250,245,235,0.95);
       backdrop-filter: saturate(180%) blur(10px);
       z-index: 1000;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
     }
     .logo { height: 50px; }
     nav ul { display: flex; gap: 2rem; }
-    nav a { font-weight: 500; position: relative; }
+    nav a {
+      font-weight: 500;
+      position: relative;
+    }
     nav a::after {
       content: '';
       position: absolute;
@@ -53,146 +56,222 @@
       background: var(--clr-accent);
       transition: width var(--transition);
     }
-    nav a.active::after,
     nav a:hover::after { width: 100%; }
 
-    /* Page Title */
-    .page-header {
-      padding-top: 8rem;
+    /* Hero */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1570968915860-3c9a815600eb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      background: var(--clr-light);
+      color: #fff;
+      padding: 0 1rem;
     }
-    .page-header h1 {
+    .hero h1 {
       font-family: var(--ff-heading);
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: var(--clr-primary);
-      margin-bottom: 0.5rem;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      line-height: 1.2;
     }
-    .page-header p { color: #555; font-size: 1rem; }
+    .hero p {
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      background: var(--clr-accent);
+      color: var(--clr-dark);
+      transition: background var(--transition);
+    }
+    .btn:hover { background: #b18a4f; }
 
-    /* Beans Grid */
-    .beans-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 4rem 2rem;
+    /* Scroll Indicator */
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 40px;
+      border: 2px solid #fff;
+      border-radius: 25px;
     }
-    .bean-card {
+    .scroll-down::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      width: 4px;
+      height: 8px;
+      background: #fff;
+      border-radius: 2px;
+      transform: translateX(-50%);
+      animation: scroll 2s infinite;
+    }
+    @keyframes scroll {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    /* Sections */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h2 {
+      font-family: var(--ff-heading);
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--clr-accent);
+      margin: 0.5rem auto 2rem;
+    }
+    p.lead { text-align: center; color: #555; max-width: 700px; margin: 0 auto 2rem; }
+
+    /* Origins Grid */
+    .origins { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; }
+    .origin-card {
       background: #fff;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       transition: transform var(--transition), box-shadow var(--transition);
     }
-    .bean-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    .origin-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.1); }
+    .origin-card img { height: 200px; width: 100%; object-fit: cover; }
+    .origin-info { padding: 1.5rem; }
+    .origin-info h3 { font-family: var(--ff-heading); margin-bottom: 0.5rem; }
+    .origin-info p { color: #666; font-size: 0.95rem; }
+
+    /* Featured Slider (Scroll Snap) */
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding-bottom: 1rem;
     }
-    .bean-img { width: 100%; height: 200px; object-fit: cover; }
-    .bean-info { padding: 1.5rem; }
-    .bean-info h3 {
-      font-family: var(--ff-heading);
-      margin-bottom: 0.5rem;
-      color: var(--clr-primary);
+    .slider::-webkit-scrollbar { display: none; }
+    .slide {
+      flex: 0 0 300px;
+      background: #fff;
+      border-radius: 8px;
+      scroll-snap-align: start;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: transform var(--transition);
     }
-    .bean-info p { font-size: 0.95rem; color: #666; margin-bottom: 1rem; }
-    .bean-info .price {
-      font-weight: 600;
-      color: var(--clr-dark);
-    }
-    .bean-info .btn-buy {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1.5rem;
-      background: var(--clr-accent);
-      color: var(--clr-dark);
-      border-radius: 50px;
-      font-weight: 500;
-      transition: background var(--transition);
-    }
-    .bean-info .btn-buy:hover { background: #b18a4f; }
+    .slide:hover { transform: scale(1.03); }
+    .slide img { width: 100%; height: 180px; object-fit: cover; }
+    .slide-content { padding: 1rem; }
+    .slide-content h4 { font-family: var(--ff-heading); margin-bottom: 0.5rem; }
+    .slide-content .price { color: var(--clr-accent); font-weight: 600; }
 
     /* Footer */
-    footer {
-      background: var(--clr-primary);
-      color: #fff;
-      text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 4rem;
-    }
+    footer { background: var(--clr-primary); color: #fff; padding: 3rem 1rem; text-align: center; }
     footer p { font-size: 0.9rem; margin-top: 1rem; }
-
-    /* Spacer to offset fixed header */
-    .spacer { height: 80px; }
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
-    <a href="index.html"><img src="https://i.imgur.com/FiYugPT.png" alt="Logo" class="logo"></a>
+    <a href="index.html"><img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café Logo" class="logo"></a>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="#" class="active">Beans</a></li>
+        <li><a href="#beans">Beans</a></li>
         <li><a href="subscription.html">Subscription</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
-  <div class="spacer"></div>
 
-  <!-- PAGE HEADER -->
-  <section class="page-header">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Exquisite Brazilian Single-Origin</h1>
+      <p>From the mineral-rich soils of Brazil to your cup—experience coffee as an art form.</p>
+      <a href="#beans" class="btn">Shop Beans</a>
+    </div>
+    <div class="scroll-down"></div>
+  </section>
+
+  <!-- ORIGINS -->
+  <section>
     <div class="container">
-      <h1>Grand Cru Beans</h1>
-      <p>Curated single-origin coffees from Brazil’s finest estates.</p>
+      <h2>Our Origins</n2>
+      <p class="lead">We partner with family farms in the most fertile regions of Brazil, cultivating rare varietals with sustainable practices.</p>
+      <div class="origins">
+        <div class="origin-card">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Fazenda Aurora Farm">
+          <div class="origin-info">
+            <h3>Fazenda Aurora</h3>
+            <p>Nestled in the Mantiqueira Mountains, yielding delicate floral notes.</p>
+          </div>
+        </div>
+        <div class="origin-card">
+          <img src="https://images.unsplash.com/photo-1541953463532-984f6d6411f6?auto=format&fit=crop&w=600&q=80" alt="Reserva Speciale Farm">
+          <div class="origin-info">
+            <h3>Reserva Speciale</h3>
+            <p>A micro-lot region known for its vibrant red bourbon varietal.</p>
+          </div>
+        </div>
+        <div class="origin-card">
+          <img src="https://images.unsplash.com/photo-1529961242133-fc495c0637bb?auto=format&fit=crop&w=600&q=80" alt="Estate Select Farm">
+          <div class="origin-info">
+            <h3>Estate Select</h3>
+            <p>High-altitude estates with volcanic soil producing rich, chocolatey bodies.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- BEANS GRID -->
-  <section class="beans-grid">
-    <div class="bean-card">
-      <img src="https://images.unsplash.com/photo-1543168250-3babbfc09078?auto=format&fit=crop&w=600&q=80" alt="Fazenda Aurora Beans" class="bean-img">
-      <div class="bean-info">
-        <h3>Fazenda Aurora</h3>
-        <p>Yellow Bourbon – Butterscotch sweetness, toasted almond & citrus zest.</p>
-        <div class="price">$24 / 250g</div>
-        <a href="#" class="btn-buy">Buy Now</a>
-      </div>
-    </div>
-    <div class="bean-card">
-      <img src="https://images.unsplash.com/photo-1529961242133-fc495c0637bb?auto=format&fit=crop&w=600&q=80" alt="Reserva Speciale Beans" class="bean-img">
-      <div class="bean-info">
-        <h3>Reserva Speciale</h3>
-        <p>Red Bourbon – Vibrant berry and floral notes.</p>
-        <div class="price">$26 / 250g</div>
-        <a href="#" class="btn-buy">Buy Now</a>
-      </div>
-    </div>
-    <div class="bean-card">
-      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Estate Select Beans" class="bean-img">
-      <div class="bean-info">
-        <h3>Estate Select</h3>
-        <p>Catuaí – Chocolatey body with bright citrus undertones.</p>
-        <div class="price">$22 / 250g</div>
-        <a href="#" class="btn-buy">Buy Now</a>
-      </div>
-    </div>
-    <div class="bean-card">
-      <img src="https://images.unsplash.com/photo-1599239371241-7887d3810bf6?auto=format&fit=crop&w=600&q=80" alt="Blue Batak Beans" class="bean-img">
-      <div class="bean-info">
-        <h3>Blue Batak</h3>
-        <p>Wet-hulled – Earthy cocoa, pipe tobacco & sweet cedar complexity.</p>
-        <div class="price">$25 / 250g</div>
-        <a href="#" class="btn-buy">Buy Now</a>
+  <!-- FEATURED BEANS -->
+  <section id="beans">
+  <section id="beans">$1
+      <div class="slider">
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1543168250-3babbfc09078?auto=format&fit=crop&w=400&q=80" alt="Fazenda Aurora Beans">
+          <div class="slide-content">
+            <h4>Fazenda Aurora</h4>
+            <div class="price">$24 / 250g</div>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1529961242133-fc495c0637bb?auto=format&fit=crop&w=400&q=80" alt="Reserva Speciale Beans">
+          <div class="slide-content">
+            <h4>Reserva Speciale</h4>
+            <div class="price">$26 / 250g</div>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80" alt="Estate Select Beans">
+          <div class="slide-content">
+            <h4>Estate Select</h4>
+            <div class="price">$22 / 250g</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Terra do Café. All Rights Reserved.</p>
+    <div class="container">
+      <p>&copy; 2025 Terra do Café. All Rights Reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
