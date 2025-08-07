@@ -40,7 +40,7 @@
 
     /* ——— Hero ——— */
     header{position:relative;height:92vh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden;color:var(--white)}
-    header::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1593553443249-990d53f406d3?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;filter:brightness(.4)}
+    header::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1566385101046-8abc32d3c3a7?auto=format&fit=crop&w=2100&q=80") center/cover no-repeat;filter:brightness(.4)}
     .hero-copy{position:relative;z-index:1;padding:0 1rem}
     .hero-copy h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6vw,5.4rem);font-weight:700;letter-spacing:2px;text-shadow:0 2px 4px rgba(0,0,0,.4)}
     .hero-copy p{font-size:1.24rem;font-weight:300;margin-top:.9rem;letter-spacing:1px}
@@ -100,7 +100,7 @@
   </header>
 
   <!-- STORY: Coffee‑bean sacks in warehouse -->
-  <section id="story" class="section-bg" style="--img:url('https://images.unsplash.com/photo-1596397496909-6f4001a3e6a5?auto=format&fit=crop&w=2100&q=80')">
+  <section id="story" class="section-bg" style="--img:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=2100&q=80')">
     <h2>From Burlap to Brew</h2>
     <div class="story-grid">
       <div>
@@ -111,59 +111,4 @@
         <img src="https://images.unsplash.com/photo-1558980664-10e7170b32d7?auto=format&fit=crop&w=960&q=80" alt="Coffee sacks tagged with farm information">
       </figure>
     </div>
-    <span class="grain"></span>
-  </section>
-
-  <!-- PRODUCTS: sacks of coffee beans -->
-  <section id="products" class="section-bg" style="--img:url('https://images.unsplash.com/photo-1612182068578-4f492adefaf0?auto=format&fit=crop&w=2100&q=80')">
-    <h2>2025 Signature Lots</h2>
-    <div class="products-grid">
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=960&q=80" alt="São Roque micro‑lot">
-        <div class="card-content">
-          <h3>São Roque Lot #13</h3>
-          <p>Jasmine • Macadamia • Tangerine. 130 kg total; packed in 5 hand‑signed burlaps.</p>
-          <div class="price">€36 / 250 g</div>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1517686469429-8bdb7a57e422?auto=format&fit=crop&w=960&q=80" alt="Mata Verde blend">
-        
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=960&q=80" alt="Nightfire dark roast">
-        
-      </article>
-    </div>
-    <span class="grain"></span>
-  </section>
-
-  <!-- CTA: burlap weave backdrop -->
-  <section id="club" class="cta section-bg" style="--img:url('https://images.unsplash.com/photo-1457332364512-830ca43b7a25?auto=format&fit=crop&w=2100&q=80')">
-    <h3>Harvest Club</h3>
-    <p>Members unseal the first burlap of each micro‑lot, receive quarterly tasting flights, and access growers’ video journals.</p>
-    <a href="#contact">Request Invitation</a>
-    <span class="grain"></span>
-  </section>
-
-  <!-- CONTACT: sack-stack backdrop -->
-  <section id="contact" class="section-bg" style="--img:url('https://images.unsplash.com/photo-1604080901130-d1260595951b?auto=format&fit=crop&w=2100&q=80')">
-    <h2>Visit & Connect</h2>
-    <p><strong>Email:</strong> <a href="mailto:hello@terra-do-cafe.com">hello@terra-do-cafe.com</a></p>
-    <p><strong>Roastery & Brew Bar:</strong> Rua dos Grãos 425 — Belo Horizonte, MG</p>
-    <span class="grain"></span>
-  </section>
-
-  <footer>© 2025 Terra do Cafe — Burlap‑Born ∙ Farm‑Signed ∙ Brazil‑Roasted</footer>
-
-  <script>
-    /* Apply background images from inline CSS variable */
-    document.querySelectorAll('.section-bg').forEach(el=>{
-      const img=el.style.getPropertyValue('--img').replace(/(^"|"$)/g,'');
-      el.style.backgroundImage=`linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.48)),${img}`;
-    });
-  </script>
-</body>
-</html>
+    <span class
