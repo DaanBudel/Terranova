@@ -6,7 +6,44 @@
   <title>Terra do Café – Artisan Single Origins</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark: #2f4f2f;
+      --green-light: #8fae94;
+      --beige: #f8f5ec;
+      --beige-dark: #eae2d4;
+      --white: #ffffff;
+      --gold: #bfa36f;
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--beige);
+      font-family: var(--font-body);
+      color: var(--green-dark);
+      line-height: 1.6;
+    }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    /* Header & Nav */
+    header { background: var(--white); backdrop-filter: blur(4px); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .logo { height: 48px; }
+    .nav-list { list-style: none; display: flex; gap: 2rem; font-weight: 500; }
+    .nav-list a { transition: color .3s ease; }
+    .nav-list a:hover, .nav-list a.active { color: var(--gold); }
+    /* Beans Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 2rem; margin-top: 2rem; }
+    .card { background: var(--white); border-left: 5px solid var(--gold); padding: 1.75rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); transition: transform .3s ease; position: relative; }
+    .card:hover { transform: translateY(-4px); }
+    .card h3 { font-family: var(--font-head); font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--green-dark); }
+    .card p { font-size: 0.95rem; color: var(--green-light); line-height: 1.4; }
+    /* Footer */
+    footer { background: var(--white); padding: 3rem 0; text-align: center; font-size: 0.9rem; color: var(--green-dark); }
+    .logo-footer { height: 36px; margin: 0 auto 1rem; }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
