@@ -3,56 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grand Cru Beans – Terra do Café</title>
-  <!-- Link to existing stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <title>Terra do Café – Artisan Single Origins</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark: #2f4f2f;
+      --green-light: #8fae94;
+      --beige: #f8f5ec;
+      --beige-dark: #eae2d4;
+      --white: #ffffff;
+      --gold: #bfa36f;
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--beige);
+      font-family: var(--font-body);
+      color: var(--green-dark);
+      line-height: 1.6;
+    }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    /* Header & Nav */
+    header { background: var(--white); backdrop-filter: blur(4px); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .logo { height: 48px; }
+    .nav-list { list-style: none; display: flex; gap: 2rem; font-weight: 500; }
+    .nav-list a { transition: color .3s ease; }
+    .nav-list a:hover, .nav-list a.active { color: var(--gold); }
+    /* Beans Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 2rem; margin-top: 2rem; }
+    .card { background: var(--white); border-left: 5px solid var(--gold); padding: 1.75rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); transition: transform .3s ease; position: relative; }
+    .card:hover { transform: translateY(-4px); }
+    .card h3 { font-family: var(--font-head); font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--green-dark); }
+    .card p { font-size: 0.95rem; color: var(--green-light); line-height: 1.4; }
+    /* Footer */
+    footer { background: var(--white); padding: 3rem 0; text-align: center; font-size: 0.9rem; color: var(--green-dark); }
+    .logo-footer { height: 36px; margin: 0 auto 1rem; }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
-    <nav class="container">
-      <a href="index.html"><img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café Logo" class="logo"></a>
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="beans.html" class="active">Beans</a></li>
-        <li><a href="subscription.html">Subscription</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav>
+        <a href="index.html"><img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café" class="logo"></a>
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="beans.html">Beans</a></li>
+          <li><a href="subscription.html">Subscription</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- MAIN BEANS SECTION -->
-  <main class="container" style="padding: 6rem 0;">
-    <h2 class="section-title">Grand Cru Beans</h2>
-    <p class="section-sub">Explore our curated single-origin collection</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Every Bean Tells a Story</h1>
+      <p>From volcanic highlands to your cup—discover micro-lot coffees that showcase the artistry of terroir.</p>
+      <a href="beans.html" class="btn">Browse Grand Cru Beans</a>
+    </div>
+  </section>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Fazenda Aurora</h3>
-        <p>Brazil – Yellow Bourbon<br>Butterscotch, toasted almond & citrus zest.</p>
-      </div>
-      <div class="card">
-        <h3>Nyeri Peaberry</h3>
-        <p>Kenya – SL28/34<br>Blackcurrant, pink grapefruit & floral bouquet.</p>
-      </div>
-      <div class="card">
-        <h3>Guji Uraga</h3>
-        <p>Ethiopia – Heirloom<br>Apricot jam, jasmine & bergamot.</p>
-      </div>
-      <div class="card">
-        <h3>Blue Batak</h3>
-        <p>Sumatra – Wet-hulled<br>Earthy cocoa, pipe tobacco & cedar.</p>
+  <!-- DIVIDER -->
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Our Philosophy</h2>
+      <p class="section-sub">Terroir, Tradition & Transparency</p>
+      <div class="about">
+        <p>At <strong>Terra do Café</strong>, we believe that the highest expression of coffee comes from respect—for land, for growers, and for each bean. We work directly with family farms, sourcing rare varietals nurtured in living soil, then roast each micro-batch to highlight its signature notes.</p>
+        <p>Our commitment to sustainability, fair trade, and full traceability ensures that every cup supports communities and ecosystems.</p>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- BEAN TEASER -->
+  <section id="teaser-beans">
+    <div class="container">
+      <h2 class="section-title">Grand Cru Collection</h2>
+      <p class="section-sub">Limited single-origins, roasted to order</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Fazenda Aurora</h3>
+          <p>Brazil – Yellow Bourbon<br>Butterscotch, toasted almond & citrus zest.</p>
+        </div>
+        <div class="card">
+          <h3>Nyeri Peaberry</h3>
+          <p>Kenya – SL28/34<br>Blackcurrant, pink grapefruit & floral bouquet.</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:2rem;">
+        <a href="beans.html" class="btn secondary">View All Beans</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIPTION -->
+  <section id="subscription">
+    <div class="container subscription">
+      <h2 class="section-title" style="color:var(--white)">Connoisseur Club</h2>
+      <p>Receive exclusive micro-lots, tasting notes, and brew guides—delivered monthly.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Join Now</button>
+      </form>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café Logo" class="logo-footer">
+      <img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café logo" class="logo-footer">
       <p>hello@terradocafe.com · +351 210 987 654</p>
-      <p>© 2025 Terra do Café</p>
+      <p>© 2025 Terra do Café. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
