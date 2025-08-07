@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra do Café</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="Logo 1.png" alt="Terra do Café Logo" class="logo" />
+    <h1>Terra do Café</h1>
+    <p class="tagline">Where coffee meets the earth.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p>Welcome to Terra do Café, where we bring you the finest, ethically-sourced coffee from the heart of the earth.</p>
+    </section>
+
+    <section>
+      <h2>Our Menu</h2>
+      <ul>
+        <li>Espresso</li>
+        <li>Cappuccino</li>
+        <li>Cold Brew</li>
+        <li>Single-Origin Pour Over</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <p>Email: hello@terradocafe.com</p>
+      <p>Instagram: @terradocafe</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Terra do Café. All rights reserved.</p>
+  </footer>
+</body>
+</html>
