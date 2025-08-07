@@ -28,7 +28,7 @@
 
     /* ——— Utilities ——— */
     .section-bg{position:relative;color:var(--white);}
-    .section-bg::before{content:"";position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;background-repeat:no-repeat;filter:brightness(.37)}
+    .section-bg::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--img) center/cover no-repeat;filter:brightness(.37)}
     .grain{position:absolute;inset:0;pointer-events:none;background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABZklEQVQ4T6WTL0hDQRiGn1xKZkUqaRJaGZX4DVraMWOXWljadEKpV2VkGk2dTvYkVGTpBLaBaI0iaT4B4eF9wzHfsmPn35zzn3n+79znqJ7BZUMNVWcBGaS6DY8A30x9hscQxqvmV9i38wZ5jGKkiBcxh6rIc2iiF3rnPCtwvYBYurheKbKMnS4FlVF6v4pCT2N9QEfIQuKQS+KJ11dQF8QS1McJoYn9wyKZWAiUmN3FjHEAKly+8IvMoEOcC1CvILuEAf8EThPHlM1N8bdO7+DeQhANTQBDp0EqYh6yjV8hBbAvsQu63yFO2hfQTpgHvNb3KmM5kG+0UMkhG0uwuyrpD+eCoZiPU3nZkeGA7nzuTxl0c4DljMiDka3KGn9gwI0lAeW1lHBEa4JJp4SThQh1JrKkKNsHaTA6JuN+o8EMj0B6d5wwqoPQFcFgYJc55KOK1BgCozCU0Hk9Gt6WQY8Ha4vrfIJBZkSx54trxr12qXmSK8hb585cSaY6Fpz2CAAAAAElFTQSuQmCC") repeat;opacity:.3;mix-blend-mode:overlay}
 
     /* ——— Sticky Nav ——— */
@@ -40,7 +40,7 @@
 
     /* ——— Hero ——— */
     header{position:relative;height:92vh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden;color:var(--white)}
-    header::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=2100&q=80") center/cover no-repeat;filter:brightness(.4)}
+    header::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1574226516831-e1dff420e8f8?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;filter:brightness(.4)}
     .hero-copy{position:relative;z-index:1;padding:0 1rem}
     .hero-copy h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6vw,5.4rem);font-weight:700;letter-spacing:2px;text-shadow:0 2px 4px rgba(0,0,0,.4)}
     .hero-copy p{font-size:1.24rem;font-weight:300;margin-top:.9rem;letter-spacing:1px}
