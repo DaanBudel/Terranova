@@ -3,280 +3,284 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Terra do Café – Rare &amp; Fine Coffee Beans</title>
-
+  <title>Terra do Café – Essence of the Bean</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
   <style>
     :root {
-      /* Brand Palette */
-      --green-dark: #21402b;
-      --green: #2f4f2f;
+      --green-dark: #2f4f2f;
+      --green-light: #8fae94;
       --beige: #f8f5ec;
       --white: #ffffff;
-      --text-dark: #2d2d2d;
       --accent-gold: #bfa36f;
-
-      /* Typography */
       --font-head: 'Playfair Display', serif;
       --font-body: 'Inter', system-ui, sans-serif;
     }
-
-    /* Base Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-body);
-      color: var(--text-dark);
+      line-height: 1.6;
+      color: var(--green-dark);
       background: var(--beige);
-      scroll-behavior: smooth;
     }
-
+    a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    p { line-height: 1.65; }
+    .container { max-width: 1200px; width: 90%; margin: 0 auto; }
 
-    /* Container */
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-
-    /* ========================= NAVIGATION ========================= */
+    /* HEADER */
     header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(6px);
-      background: rgba(255,255,255,0.7);
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      background: var(--white);
+      backdrop-filter: blur(4px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav li { font-weight: 500; }
-    nav li a { transition: color .3s ease; }
-    nav li a:hover { color: var(--accent-gold); }
-    .logo { width: 60px; height: auto; }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .logo { height: 48px; }
+    ul.nav-list {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+    }
+    ul.nav-list li a:hover {
+      color: var(--accent-gold);
+    }
 
-    /* ========================= HERO ========================= */
+    /* HERO */
     .hero {
-      position: relative;
-      min-height: 95vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      background: url("https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-    }
-    .hero::after { /* Overlay */
-      content: "";
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-    .hero-content {
-      position: relative;
-      padding: 0 1rem;
+      background: var(--green-dark);
       color: var(--white);
-      max-width: 700px;
-      animation: fadeInUp .9s ease-out both .2s;
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
     }
     .hero h1 {
       font-family: var(--font-head);
       font-size: clamp(2.5rem, 6vw, 4rem);
       margin-bottom: 1rem;
-      letter-spacing: .5px;
+      letter-spacing: 1px;
     }
-    .hero p { font-size: 1.15rem; margin-bottom: 2rem; opacity: .95; }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    .hero p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
-
-    /* CTA Button */
     .btn {
       display: inline-block;
       padding: 0.9rem 2.2rem;
-      font-weight: 600;
-      border-radius: 100px;
-      background: var(--green);
+      background: var(--accent-gold);
       color: var(--white);
-      transition: background .3s ease, transform .3s ease;
+      border-radius: 100px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
     }
-    .btn:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #a78d5a;
+    }
 
-    /* ========================= SECTIONS ========================= */
+    /* SECTIONS */
     section { padding: 5rem 0; }
     h2.section-title {
       font-family: var(--font-head);
-      font-size: 2.25rem;
       text-align: center;
-      margin-bottom: 3rem;
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
       position: relative;
     }
     h2.section-title::after {
-      content: "";
-      width: 70px; height: 3px;
-      background: var(--accent-gold);
+      content: '';
       display: block;
-      margin: 1rem auto 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-gold);
+      margin: 0.5rem auto 0;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--green-light);
+      margin-bottom: 3rem;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
     }
 
-    /* About */
-    .about-grid {
-      display: grid; gap: 3rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-      align-items: center;
+    /* ABOUT */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--green-dark);
     }
-    .about-image {
-      border-radius: 20px; overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,.08);
-    }
+    .about-content p { margin-bottom: 1.25rem; }
 
-    /* Collection Cards */
+    /* BEANS CARDS */
     .cards {
-      display: grid; gap: 2rem;
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
     .card {
       background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(0,0,0,.05);
-      overflow: hidden;
-      transition: transform .4s ease;
+      border-left: 5px solid var(--accent-gold);
+      padding: 1.75rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease;
     }
-    .card:hover { transform: translateY(-6px); }
-    .card img { height: 180px; object-fit: cover; }
-    .card-content { padding: 1.5rem; }
-    .card-content h3 { font-family: var(--font-head); font-size: 1.3rem; margin-bottom: .5rem; }
-    .card-content p { font-size: .95rem; color: #555; }
+    .card:hover { transform: translateY(-4px); }
+    .card h3 {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--green-dark);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--green-light);
+    }
 
-    /* Subscription */
+    /* SUBSCRIPTION */
     .subscription {
-      background: var(--green-dark);
-      color: var(--white);
-      border-radius: 20px;
+      background: var(--green-light);
       padding: 4rem 2rem;
+      border-radius: 16px;
       text-align: center;
-    }
-    .subscription h2 { color: var(--white); }
-    .subscription form { margin-top: 2rem; display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
-    .subscription input[type="email"] {
-      padding: .9rem 1.2rem;
-      border-radius: 40px; border: none; width: 260px; font-size: .95rem;
-    }
-    .subscription button { padding: .9rem 1.8rem; border: none; border-radius: 40px; background: var(--accent-gold); color: var(--white); font-weight: 600; cursor: pointer; }
-    .subscription button:hover { opacity: .9; }
-
-    /* Footer */
-    footer {
-      background: var(--green-dark);
       color: var(--white);
-      text-align: center;
-      padding: 2rem 0 3rem;
-      font-size: .95rem;
-      line-height: 1.5;
     }
+    .subscription p {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    .subscription input[type="email"] {
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 40px;
+      width: 280px;
+      margin-right: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .subscription button {
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 40px;
+      background: var(--accent-gold);
+      color: var(--white);
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .subscription button:hover { opacity: 0.9; }
 
-    /* Utilities */
-    .mb-2 { margin-bottom: 2rem; }
+    /* FOOTER */
+    footer {
+      background: var(--white);
+      text-align: center;
+      padding: 3rem 0;
+      font-size: 0.9rem;
+      color: var(--green-dark);
+    }
+    footer .footer-logo {
+      display: block;
+      margin: 0 auto 1rem;
+      height: 36px;
+    }
+    footer p { margin-bottom: 0.5rem; }
   </style>
 </head>
 <body>
-  <!-- ========================= HEADER ========================= -->
+  <!-- HEADER -->
   <header>
     <div class="container">
       <nav>
-        <a href="#" aria-label="Terra do Café Home">
+        <a href="#">
           <img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café logo" class="logo" />
         </a>
-        <ul>
+        <ul class="nav-list">
           <li><a href="#about">About</a></li>
           <li><a href="#beans">Beans</a></li>
           <li><a href="#subscription">Subscription</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ========================= HERO ========================= -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h1>Discover Rare, Single‑Origin Coffee Beans</h1>
-      <p>Hand‑selected lots, expertly roasted in micro‑batches for discerning palates worldwide.</p>
-      <a href="#beans" class="btn">Explore Beans</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Essence of the Bean</h1>
+      <p>Elevating single-origin coffee to an art form with curated micro-lots and refined roast profiles.</p>
+      <a href="#beans" class="btn">Our Beans</a>
     </div>
   </section>
 
-  <!-- ========================= ABOUT ========================= -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title">Our Craft</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="mb-2"><strong>Terra do Café</strong> curates exceptional coffees from secluded highlands and volcanic soils. We collaborate with growers who cultivate heritage varietals using regenerative practices, ensuring each harvest preserves biodiversity and delivers unrivalled flavour depth.</p>
-          <p class="mb-2">Our roasting philosophy is simple: respect the bean. Precise, low-volume roasting unlocks nuanced tasting notes — from sun‑ripened berry to silky praline — elevating your brew ritual.</p>
-          <p>Join us in celebrating the terroir and the people behind every bean.</p>
-        </div>
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1578413894379-94c4f190f5f5?auto=format&fit=crop&w=1000&q=80" alt="Coffee cherries on branch" />
-        </div>
+      <h2 class="section-title">Our Philosophy</h2>
+      <p class="section-subtitle">Crafted with soil, sun, and soul</p>
+      <div class="about-content">
+        <p>At <strong>Terra do Café</strong>, we celebrate terroir. Partnering with expert growers, we source rare varietals grown in nutrient-rich soils. Through precise micro-batch roasting, we unveil the full spectrum of flavors — from delicate florals to rich cocoa undertones.</p>
+        <p>Every bean is a testament to place and passion, curated for the discerning palate.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========================= BEANS ========================= -->
+  <!-- BEANS -->
   <section id="beans">
     <div class="container">
-      <h2 class="section-title">Grand Cru Collection</h2>
+      <h2 class="section-title">Grand Cru Beans</h2>
+      <p class="section-subtitle">Exclusive single origins, limited release</p>
       <div class="cards">
-        <!-- Card 1 -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1580539956383-c9e75d0ff64d?auto=format&fit=crop&w=900&q=80" alt="Fazenda Aurora" />
-          <div class="card-content">
-            <h3>Fazenda Aurora</h3>
-            <p>Brazil – Yellow Bourbon. Butterscotch sweetness, toasted almond &amp; orange zest finish.</p>
-          </div>
+          <h3>Fazenda Aurora</h3>
+          <p>Brazil – Yellow Bourbon<br>Butterscotch sweetness, toasted almond & citrus zest.</p>
         </div>
-        <!-- Card 2 -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1527176930608-09cb256ab504?auto=format&fit=crop&w=900&q=80" alt="Nyeri Peaberry" />
-          <div class="card-content">
-            <h3>Nyeri Peaberry</h3>
-            <p>Kenya – SL28/34. Vibrant blackcurrant, pink grapefruit &amp; floral bouquet.</p>
-          </div>
+          <h3>Nyeri Peaberry</h3>
+          <p>Kenya – SL28/34<br>Vibrant blackcurrant, pink grapefruit & floral bouquet.</p>
         </div>
-        <!-- Card 3 -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1570598912133-5fd2aacf9f6b?auto=format&fit=crop&w=900&q=80" alt="Guji Uraga" />
-          <div class="card-content">
-            <h3>Guji Uraga</h3>
-            <p>Ethiopia – Heirloom. Silky body with notes of apricot jam, jasmine &amp; bergamot.</p>
-          </div>
+          <h3>Guji Uraga</h3>
+          <p>Ethiopia – Heirloom<br>Silky body with notes of apricot jam, jasmine & bergamot.</p>
         </div>
-        <!-- Card 4 -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1545243424-0ce743321e11?auto=format&fit=crop&w=900&q=80" alt="Sumatra Blue Batak" />
-          <div class="card-content">
-            <h3>Blue Batak</h3>
-            <p>Sumatra – Wet‑hulled. Earthy cocoa, pipe tobacco &amp; sweet cedar complexity.</p>
-          </div>
+          <h3>Blue Batak</h3>
+          <p>Sumatra – Wet-hulled<br>Earthy cocoa, pipe tobacco & sweet cedar complexity.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================= SUBSCRIPTION ========================= -->
-  <section class="subscription" id="subscription">
+  <!-- SUBSCRIPTION -->
+  <section id="subscription" class="subscription">
     <div class="container">
       <h2 class="section-title" style="color:var(--white);">Connoisseur Club</h2>
-      <p>Receive curated, limited‑release beans every month, complete with detailed tasting cards &amp; brew guides.</p>
+      <p>Monthly curated micro-lots with tasting notes and brew guides delivered to your door.</p>
       <form>
-        <input type="email" name="email" placeholder="Your email address" required />
+        <input type="email" placeholder="Your email address" required />
         <button type="submit">Join Now</button>
       </form>
     </div>
   </section>
 
-  <!-- ========================= FOOTER ========================= -->
-  <footer id="contact">
+  <!-- FOOTER -->
+  <footer>
     <div class="container">
-      <img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café logo small" class="logo" style="margin:0 auto 1rem;" />
-      <p>hello@terradocafe.com &nbsp;|&nbsp; +351 210 987 654</p>
-      <p>© 2025 Terra do Café — Rare &amp; Fine Coffee Beans.</p>
+      <img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café logo" class="footer-logo" />
+      <p>hello@terradocafe.com | +351 210 987 654</p>
+      <p>© 2025 Terra do Café. All rights reserved.</p>
     </div>
   </footer>
 </body>
