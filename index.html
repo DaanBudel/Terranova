@@ -2,135 +2,291 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terra do Café</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Terra do Café – Artisan Coffee</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      /* Brand Palette */
+      --green-dark: #21402b;
+      --green: #2f4f2f;
+      --beige: #f8f5ec;
+      --white: #ffffff;
+      --text-dark: #2d2d2d;
+      --accent-gold: #bfa36f;
+
+      /* Typography */
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
     /* Base Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #333; background: #faf5eb; line-height: 1.6; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--beige);
+      scroll-behavior: smooth;
+    }
+
     img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    p { line-height: 1.65; }
 
-    /* Layout */
-    header, footer { background: #fff; padding: 1rem 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    nav { display: flex; align-items: center; justify-content: space-between; }
-    nav .logo { height: 50px; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav a { text-decoration: none; color: #2f4f2f; font-weight: 500; }
+    /* Container */
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
+    /* ========================= NAVIGATION ========================= */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav li { font-weight: 500; }
+    nav li a { transition: color .3s ease; }
+    nav li a:hover { color: var(--accent-gold); }
+    .logo { width: 60px; height: auto; }
+
+    /* ========================= HERO ========================= */
     .hero {
-      display: grid;
-      place-items: center;
-      min-height: 80vh;
+      position: relative;
+      min-height: 95vh;
+      display: flex; align-items: center; justify-content: center;
       text-align: center;
-      background-image: url('https://source.unsplash.com/1600x900/?coffee,beans');
-      background-size: cover;
-      background-position: center;
+      background: url("https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    }
+    .hero::after { /* Overlay */
+      content: "";
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .hero-content {
       position: relative;
+      padding: 0 1rem;
+      color: var(--white);
+      max-width: 700px;
+      animation: fadeInUp .9s ease-out both .2s;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.4);
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      letter-spacing: .5px;
     }
-    .hero .content {
-      position: relative;
-      color: #fff;
-      max-width: 600px;
+    .hero p { font-size: 1.15rem; margin-bottom: 2rem; opacity: .95; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+
+    /* CTA Button */
     .btn {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: #2f4f2f;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
+      padding: 0.9rem 2.2rem;
       font-weight: 600;
-      transition: background 0.3s;
+      border-radius: 100px;
+      background: var(--green);
+      color: var(--white);
+      transition: background .3s ease, transform .3s ease;
     }
-    .btn:hover { background: #21402b; }
+    .btn:hover { background: var(--green-dark); transform: translateY(-2px); }
 
-    .section { padding: 4rem 2rem; }
-    .section h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #2f4f2f; }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+    /* ========================= SECTIONS ========================= */
+    section { padding: 5rem 0; }
+    h2.section-title {
+      font-family: var(--font-head);
+      font-size: 2.25rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
     }
-    .feature-card {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    h2.section-title::after {
+      content: "";
+      width: 70px; height: 3px;
+      background: var(--accent-gold);
+      display: block;
+      margin: 1rem auto 0;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid; gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      align-items: center;
+    }
+    .about-image {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+
+    /* Collection Cards */
+    .cards {
+      display: grid; gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    }
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.05);
+      overflow: hidden;
+      transition: transform .4s ease;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card img { height: 180px; object-fit: cover; }
+    .card-content { padding: 1.5rem; }
+    .card-content h3 { font-family: var(--font-head); font-size: 1.3rem; margin-bottom: .5rem; }
+    .card-content p { font-size: .95rem; color: #555; }
+
+    /* Newsletter */
+    .newsletter {
+      background: var(--green-dark);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 4rem 2rem;
       text-align: center;
     }
-    .feature-card h3 { margin-bottom: 1rem; color: #2f4f2f; }
-    .feature-card p { font-size: 0.95rem; color: #555; }
+    .newsletter h2 { color: var(--white); }
+    .newsletter form { margin-top: 2rem; display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+    .newsletter input[type="email"] {
+      padding: .9rem 1.2rem;
+      border-radius: 40px; border: none; width: 260px; font-size: .95rem;
+    }
+    .newsletter button { padding: .9rem 1.8rem; border: none; border-radius: 40px; background: var(--accent-gold); color: var(--white); font-weight: 600; cursor: pointer; }
+    .newsletter button:hover { opacity: .9; }
 
-    footer { text-align: center; font-size: 0.9rem; }
+    /* Footer */
+    footer {
+      background: var(--green-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 0 3rem;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    /* Utilities */
+    .mb-2 { margin-bottom: 2rem; }
   </style>
 </head>
 <body>
+  <!-- ========================= HEADER ========================= -->
   <header>
-    <nav>
-      <img src="Logo%201.png" alt="Terra do Café Logo" class="logo" />
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav>
+        <a href="#" aria-label="Terra do Café Home">
+          <img src="https://i.imgur.com/AOWw4eG.png" alt="Terra do Café logo" class="logo" />
+        </a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#visit">Visit</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="content">
-      <h1>Welcome to Terra do Café</h1>
-      <p>Where the earth meets the perfect cup of coffee. Experience rich flavors, organic beans, and a journey from farm to cup.</p>
-      <a href="#menu" class="btn">Explore Our Menu</a>
+  <!-- ========================= HERO ========================= -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Crafting Moments, One Cup at a Time</h1>
+      <p>Discover the art of specialty coffee, ethically sourced and roasted to perfection. Welcome to your new ritual.</p>
+      <a href="#collection" class="btn">Browse Collection</a>
     </div>
   </section>
 
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <div class="features">
-      <div class="feature-card">
-        <h3>Our Origins</h3>
-        <p>We source our beans from small farms nestled in the highlands, championing sustainable and fair trade practices.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Artisanal Roasting</h3>
-        <p>Each batch is carefully roasted by experts to highlight unique flavor notes, from fruity and floral to deep and chocolaty.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Community</h3>
-        <p>Enjoy a cozy environment where coffee lovers gather, work, and connect over the world’s favorite brew.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="menu" class="section">
-    <h2>Our Menu</h2>
-    <div class="features">
-      <div class="feature-card">
-        <h3>Espresso</h3>
-        <p>Intense and rich, our classic espresso is the foundation of every great coffee drink.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Pour Over</h3>
-        <p>Meticulously brewed for clarity and complexity in every cup.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Latte Art</h3>
-        <p>Smooth espresso and steamed milk, finished with beautiful latte art.</p>
+  <!-- ========================= ABOUT ========================= -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Our Story</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="mb-2">Founded on the belief that great coffee begins with the soil, <strong>Terra do Café</strong> partners with smallholder farms across South America and Africa. Every bean is nurtured in mineral‑rich earth, harvested by hand, and fairly traded to ensure a thriving coffee community.</p>
+          <p class="mb-2">We roast in micro‑batches to highlight each origin’s unique character — from sun‑kissed citrus notes to velvety dark‑chocolate undertones.</p>
+          <p class="mb-2">Step into our café and enjoy a sensory journey, where craftsmanship meets sustainability.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?auto=format&fit=crop&w=900&q=80" alt="Roasted coffee beans" />
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ========================= COLLECTION ========================= -->
+  <section id="collection">
+    <div class="container">
+      <h2 class="section-title">Signature Collection</h2>
+      <div class="cards">
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1558433499-51b1f6e8655e?auto=format&fit=crop&w=900&q=80" alt="Sierra Altas" />
+          <div class="card-content">
+            <h3>Sierra Altas</h3>
+            <p>Notes of caramel, red apple &amp; cocoa. Sourced from high‑altitude farms of Colombia.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Mida Highlands" />
+          <div class="card-content">
+            <h3>Mida Highlands</h3>
+            <p>Delicate jasmine, citrus &amp; honey sweetness from the hills of Ethiopia.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1580539912303-6ea4af0dcd91?auto=format&fit=crop&w=900&q=80" alt="Veludo Noir" />
+          <div class="card-content">
+            <h3>Veludo Noir</h3>
+            <p>Intense dark chocolate &amp; walnut, our masterful espresso blend for bold palates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= VISIT ========================= -->
+  <section id="visit">
+    <div class="container">
+      <h2 class="section-title">Visit Us</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80" alt="Café interior" />
+        </div>
+        <div class="about-text">
+          <p class="mb-2"><strong>Flagship Café – Lisbon</strong><br/>Rua de São Bento 210<br/>10:00 – 20:00, Mon‑Sun</p>
+          <p class="mb-2">Immerse yourself in an elegant, light‑filled space designed for connoisseurs and casual sippers alike. From curated pour‑overs to artfully poured cappuccinos, our baristas elevate every cup.</p>
+          <p>Takeaway available. Pets welcome on the terrace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= NEWSLETTER ========================= -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <h2 class="section-title" style="color:var(--white);">Stay in the Loop</h2>
+      <p>Exclusive beans, brewing classes &amp; community events straight to your inbox.</p>
+      <form>
+        <input type="email" name="email" placeholder="Your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
   <footer id="contact">
-    <p>Contact us: hello@terradocafe.com | 123-456-7890</p>
-    <p>&copy; 2025 Terra do Café. All rights reserved.</p>
+    <div class="container">
+      <img src="https://i.imgur.com/AOWw4eG.png" alt="Terra do Café logo small" class="logo" style="margin:0 auto 1rem;" />
+      <p>hello@terradocafe.com &nbsp;|&nbsp; +351 210 987 654</p>
+      <p>© 2025 Terra do Café — Crafted with passion &amp; integrity.</p>
+    </div>
   </footer>
 </body>
 </html>
